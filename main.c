@@ -9,7 +9,7 @@ int main()
     sprintf(theNumber, "%ld", number); 
     int sum = 0;
     long int size = strlen(theNumber);
-    //*
+    // the checksum
     for (int i = size - 1; i > 0; i -= 2)
     {
         sum += theNumber[i] - '0';
@@ -24,7 +24,23 @@ int main()
 		}
 		sum += temp;
 	}
-    
-    printf("%d",sum);
-	//*    
+    if (sum % 10 == 0)
+    {
+        if (size == 15 && theNumber[1] == 34)
+        {
+            printf("AMEX\n");
+        }
+        else if (size == 16 && theNumber[1] == 55)
+        {
+            printf("MasterCard\n");
+        }
+        else
+        {
+            printf("Visa\n");
+        }
+    }
+    else
+    {
+        printf("Invalid\n");
+    }
 }
