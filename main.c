@@ -4,10 +4,11 @@
 int main()
 {
     printf("-Enter a credit number: ");
-    long int number = 4003600000000014;
-    char* theNumber;
+    long int number = 0;
+    scanf("%ld", &number);
+    char theNumber[20];
     sprintf(theNumber, "%ld", number); 
-    int sum = 0;
+    long int sum = 0;
     long int size = strlen(theNumber);
     // the checksum
     for (int i = size - 1; i > 0; i -= 2)
