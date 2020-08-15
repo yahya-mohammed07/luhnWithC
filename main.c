@@ -15,16 +15,18 @@ int main()
     {
         sum += credit[i] - '0';
     }
-    for(int i = size -2; i >= 0; i -= 2)
+    for(int i = size - 2; i >= 0; i -= 2)
 	{
 		int temp = 0;
-		temp += (credit[i]-'0') * 2;
-		if(temp > 9)
+		temp += (credit[i] - '0') * 2;
+		if (temp > 9)
 		{
 			temp -= 9;
 		}
 		sum += temp;
 	}
+    int temp = 10 * (credit[0] - '0') + credit[1] - '0'; // to commbine two first chars
+    // to get the type of the card
     if (size >= 13)
     {
         if (sum % 10 == 0)
@@ -33,11 +35,11 @@ int main()
             {
                 printf("VISA\n");
             }
-            else if((credit[0] == '3' && credit[1] == '4') || credit[0] == '3' && credit[1] == '7')
+            else if (temp == 34 || temp == 37)
             {
                 printf("AMEX\n");
             }
-            else if((credit[0] = '5' && credit[1] == '1') || (credit[0] = '5' && credit[1] == '2') || (credit[0] = '5' && credit[1] == '3') || (credit[0] = '5' && credit[1] == '4') || (credit[0] = '5' && credit[1] == '5'))
+            else if (temp == 51 || temp == 52 || temp == 53 || temp == 54 || temp == 55)
             {
                 printf("MASTERCARD\n");
             }
@@ -55,5 +57,4 @@ int main()
     {
         printf("INVALID\n");
     }
-    
 }
