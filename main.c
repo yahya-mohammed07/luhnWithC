@@ -8,7 +8,7 @@ int main()
     char* theNumber;
     sprintf(theNumber, "%ld", number); 
     int sum = 0;
-    int size = strlen(theNumber);
+    long int size = strlen(theNumber);
     //*
     for (int i = size - 1; i > 0; i -= 2)
     {
