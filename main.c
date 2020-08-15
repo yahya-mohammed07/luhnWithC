@@ -4,50 +4,56 @@
 int main()
 {
     printf("-Enter a credit number: ");
-    long int number = 378282246310005;
+    long int number = 0;
     scanf("%ld", &number);
-    char theNumber[20];
-    sprintf(theNumber, "%ld", number); 
+    char credit[20];
+    sprintf(credit, "%ld", number); 
     long int sum = 0;
-    long int size = strlen(theNumber);
+    long int size = strlen(credit);
     // the checksum
     for (int i = size - 1; i >= 0; i -= 2)
     {
-        sum += theNumber[i] - '0';
+        sum += credit[i] - '0';
     }
     for(int i = size -2; i >= 0; i -= 2)
 	{
 		int temp = 0;
-		temp += (theNumber[i]-'0') * 2;
+		temp += (credit[i]-'0') * 2;
 		if(temp > 9)
 		{
 			temp -= 9;
 		}
 		sum += temp;
 	}
-    if (sum % 10 == 0)
+    if (size >= 13)
     {
-        if (size == 15)
+        if (sum % 10 == 0)
         {
-            if (theNumber[0] == '3' && theNumber[1] == '7')
-            {
-                printf("AMEX\n");
-            }
-        }
-        else if (size == 13 || size == 16)
-        {
-            if (theNumber[0] == '4')
+            if (credit[0] == '4')
             {
                 printf("VISA\n");
             }
+            else if((credit[0] == '3' && credit[1] == '4') || credit[0] == '3' && credit[1] == '7')
+            {
+                printf("AMEX\n");
+            }
+            else if((credit[0] = '5' && credit[1] == '1') || (credit[0] = '5' && credit[1] == '2') || (credit[0] = '5' && credit[1] == '3') || (credit[0] = '5' && credit[1] == '4') || (credit[0] = '5' && credit[1] == '5'))
+            {
+                printf("MASTERCARD\n");
+            }
+            else
+            {
+                printf("INVALID\n");
+            }
         }
-        else 
+        else
         {
-            printf("MASTERCARD\n");
+            printf("INVALID\n");
         }
     }
     else
     {
         printf("INVALID\n");
     }
+    
 }
