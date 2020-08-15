@@ -4,14 +4,14 @@
 int main()
 {
     printf("-Enter a credit number: ");
-    long int number = 0;
+    long int number = 378282246310005;
     scanf("%ld", &number);
     char theNumber[20];
     sprintf(theNumber, "%ld", number); 
     long int sum = 0;
     long int size = strlen(theNumber);
     // the checksum
-    for (int i = size - 1; i > 0; i -= 2)
+    for (int i = size - 1; i >= 0; i -= 2)
     {
         sum += theNumber[i] - '0';
     }
@@ -27,21 +27,27 @@ int main()
 	}
     if (sum % 10 == 0)
     {
-        if (size == 15 && theNumber[1] == 34)
+        if (size == 15)
         {
-            printf("AMEX\n");
+            if (theNumber[0] == '3' && theNumber[1] == '7')
+            {
+                printf("AMEX\n");
+            }
         }
-        else if (size == 16 && theNumber[1] == 55)
+        else if (size == 13 || size == 16)
         {
-            printf("MasterCard\n");
+            if (theNumber[0] == '4')
+            {
+                printf("VISA\n");
+            }
         }
-        else
+        else 
         {
-            printf("Visa\n");
+            printf("MASTERCARD\n");
         }
     }
     else
     {
-        printf("Invalid\n");
+        printf("INVALID\n");
     }
 }
